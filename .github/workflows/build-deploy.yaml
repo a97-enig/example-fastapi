@@ -63,3 +63,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
           cache-from: type=registry,ref=user/app:buildcache
           cache-to: type=registry,ref=user/app:buildcache,mode=max
+
+      - name: Publish to Digital Ocean Container Registry
+        uses: ripplr-io/docr-docker-publish@v1
+        with:
+          image_path: registry.digitalocean.com/fastapi-tutorial
