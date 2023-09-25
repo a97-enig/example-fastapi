@@ -47,6 +47,16 @@ jobs:
           pip install pytest
           pytest -v
 
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: $${{ secrets.DIGITALOCEAN_TOKEN }}
+
+      - name: Publish to Digital Ocean Container Registry
+        uses: ripplr-io/docr-docker-publish@v1
+        with:
+          image_path: registry.digitalocean.com/fastapi-tutorial
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to Docker Hub
@@ -64,7 +74,3 @@ jobs:
           cache-from: type=registry,ref=user/app:buildcache
           cache-to: type=registry,ref=user/app:buildcache,mode=max
 
-      - name: Publish to Digital Ocean Container Registry
-        uses: ripplr-io/docr-docker-publish@v1
-        with:
-          image_path: registry.digitalocean.com/fastapi-tutorial
