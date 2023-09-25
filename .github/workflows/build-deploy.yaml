@@ -1,8 +1,6 @@
 name: Build and deploy code
 
 on: push
-  push: 
-    branches: ["main"]
 
 jobs: 
   job1:
