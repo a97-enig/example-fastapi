@@ -73,4 +73,3 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi:latest
           cache-from: type=registry,ref=user/app:buildcache
           cache-to: type=registry,ref=user/app:buildcache,mode=max
-
